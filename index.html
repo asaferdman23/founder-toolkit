@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Toolkit — Your AI Co-Founder Suite</title>
+    <meta name="description" content="Your AI co-founder for unit economics, market strategy, pitch prep, GTM, investor relations, and more. Think in numbers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script defer data-domain="cofounder.cc" src="https://plausible.io/js/script.js"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1e40af;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --border: #334155;
+            --text: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 10rem 0 6rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Install section */
+        .install-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 3rem auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .install-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary);
+            flex: 1;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Skills grid */
+        .skills-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .skills-section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .skill-emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .skill-command {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Demo section */
+        .demo-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .demo-section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .example-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .example-output {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 4rem 0;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Founder Toolkit</div>
+            <div class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#demo">Examples</a>
+                <a href="https://github.com/asaferdman23/founder-toolkit" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="tagline">Your AI Co-Founder</div>
+            <h1>Think in Numbers</h1>
+            <p>ROI calculator, market intel, GTM playbook, pitch prep, investor relations, cost optimization, and social marketing — all in Claude.</p>
+
+            <div class="install-box">
+                <code class="install-code">/plugin marketplace add asaferdman23/founder-toolkit</code>
+                <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2>8 Specialized Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-emoji">🎯</div>
+                    <div class="skill-name">Cofounder</div>
+                    <div class="skill-command">/cofounder</div>
+                    <div class="skill-description">Business strategy router. Understands any founder question and routes to the right specialist or answers directly.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">📊</div>
+                    <div class="skill-name">ROI Calculator</div>
+                    <div class="skill-command">/cofounder-roi</div>
+                    <div class="skill-description">Unit economics, CAC/LTV, break-even, runway, and pricing scenarios. All outputs as structured tables with assumptions.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">🔍</div>
+                    <div class="skill-name">Market Intel</div>
+                    <div class="skill-command">/cofounder-market</div>
+                    <div class="skill-description">Segment analysis, market sizing, competitor research, pricing strategy, and TAM estimation.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">🚀</div>
+                    <div class="skill-name">GTM Playbook</div>
+                    <div class="skill-command">/cofounder-gtm</div>
+                    <div class="skill-description">Go-to-market strategy, networking, LinkedIn playbook, conferences, content marketing, and partnerships.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">🎤</div>
+                    <div class="skill-name">Pitch Prep</div>
+                    <div class="skill-command">/cofounder-pitch</div>
+                    <div class="skill-description">Prepare for any meeting — client discovery, investor pitch, demo. Get scripts, objection handling, and proposals.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">💰</div>
+                    <div class="skill-name">Investor Agent</div>
+                    <div class="skill-command">/investor</div>
+                    <div class="skill-description">Pitch decks, financial projections, fundraising strategy, valuation, and investor positioning.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">💸</div>
+                    <div class="skill-name">Cost Reducer</div>
+                    <div class="skill-command">/cost-reducer</div>
+                    <div class="skill-description">Review infrastructure costs, optimize API spending, negotiate vendor fees, and reduce cloud bills.</div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-emoji">📱</div>
+                    <div class="skill-name">Social Marketing</div>
+                    <div class="skill-command">/social-marketing</div>
+                    <div class="skill-description">Content calendars, post writing, ad copy, growth strategy, and campaign planning for every platform.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <h2>Examples</h2>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab(event, 'tab-roi')">ROI Calculation</button>
+                <button class="tab-btn" onclick="showTab(event, 'tab-gtm')">GTM Strategy</button>
+                <button class="tab-btn" onclick="showTab(event, 'tab-pitch')">Pitch Prep</button>
+                <button class="tab-btn" onclick="showTab(event, 'tab-market')">Market Analysis</button>
+            </div>
+
+            <div id="tab-roi" class="tab-content active">
+                <strong>Question:</strong>
+                <div class="example-input">
+/cofounder-roi
+Our target: B2B SaaS
+Pricing: $1,500/month
+CAC: $2,000
+Avg. customer lifetime: 18 months
+What's our payback period and LTV:CAC ratio?
+                </div>
+                <strong>Response includes:</strong>
+                <div class="example-output">
+Payback Period: 1.3 months
+LTV (18 months): $27,000
+CAC: $2,000
+LTV:CAC Ratio: 13.5:1 ✓ Healthy
+
+Assumptions:
+- Monthly churn: 5.5%
+- No expansion revenue
+- No discounting
+
+Interpretation:
+You recover customer acquisition cost in 1.3 months, leaving 16.7 months of pure profit. Your ratio of 13.5:1 is exceptional for B2B SaaS (healthy = 3:1+).
+
+Next Actions:
+- Invest more in customer acquisition
+- Target 10% payback or better
+- Monitor churn — even 1% increase → 5mo payback
+                </div>
+            </div>
+
+            <div id="tab-gtm" class="tab-content">
+                <strong>Question:</strong>
+                <div class="example-input">
+/cofounder-gtm
+B2B SaaS for operations teams
+Budget: $2,000/month
+Timeline: 12 months
+Goal: 50 paying customers
+
+What channels should I focus on?
+                </div>
+                <strong>Response includes:</strong>
+                <div class="example-output">
+Channel Strategy (prioritized by your situation):
+
+1. Cold LinkedIn (30% effort, quick)
+   - 50 personalized outreach/week
+   - Expected: 2-3 meetings/week
+   - Cost: ~$0 (your time)
+
+2. Twitter/Content (40% effort, 3-6mo to payoff)
+   - 3 tweets/week about your solution
+   - Build 500 followers → 5-10 inbound/mo
+   - Cost: ~$300/mo buffer
+
+3. Communities (20% effort, steady)
+   - Dev.to, ProductHunt, Slack communities
+   - 2-3 hrs/week
+   - Cost: $0
+
+4. Paid LinkedIn (10% effort, expensive)
+   - Start at $300/mo only after organic saturates
+   - Cost: $1,700/mo reserved
+
+Budget Allocation:
+LinkedIn ads: $300/mo
+Content tools: $300/mo
+Reserved: $1,400/mo
+
+Next Actions This Week:
+- Write your cold email template
+- Set up Twitter post scheduler
+- Find 3 communities to join
+                </div>
+            </div>
+
+            <div id="tab-pitch" class="tab-content">
+                <strong>Question:</strong>
+                <div class="example-input">
+/cofounder-pitch
+Meeting with a Series A investor Thursday
+Industry: B2B operations SaaS
+We've closed $100K ARR
+Investor's focus: AI-powered automation
+                </div>
+                <strong>Response includes:</strong>
+                <div class="example-output">
+PITCH PREP PACKAGE
+
+1. Investor Profile Analysis
+   - Thesis: AI automation, $100K-$5M ARR stage
+   - Similar portfolio: Zapier, Mercury, Retool
+   - Red flags: Profitability pressure, path to $1M+ ARR
+
+2. Your ROI Argument
+   Lead with: "We're building the enterprise automation platform..."
+   Support with: AI efficiency + lower CAC than category average
+   Land on: "Path to $10M ARR in 3 years"
+
+3. Objection Handling
+   Q: "How is this different from Zapier?"
+   A: "Zapier is integration-focused. We're AI + domain expertise for [your vertical]."
+
+   Q: "What's your unfair advantage?"
+   A: [Your answer based on your unique insight/data]
+
+4. Meeting Script (with timing)
+   00:00-02:00 Warm-up + context
+   02:00-08:00 Problem + your solution
+   08:00-12:00 Traction + metrics
+   12:00-15:00 Vision + ask
+   15:00-20:00 Questions
+
+5. Follow-up Strategy
+   - Send deck recap within 2 hours
+   - Specific question answers within 24 hours
+   - Next meeting request by Friday (use Calendly link)
+                </div>
+            </div>
+
+            <div id="tab-market" class="tab-content">
+                <strong>Question:</strong>
+                <div class="example-input">
+/cofounder-market
+B2B SaaS for operations teams
+Target customer: Operations director
+Competitive landscape: Zapier, Make, Pabbly
+How big is the market and what's our positioning?
+                </div>
+                <strong>Response includes:</strong>
+                <div class="example-output">
+MARKET ANALYSIS
+
+TAM Estimation:
+- 150K+ operations teams in US (SMB+)
+- Avg. SaaS spend per team: $8,000/year
+- Total addressable market: $1.2B+
+
+Your Positioning (vs. competitors):
+                           You          Zapier    Make       Pabbly
+Price                      $299/mo      $299+     Free+      $99+
+Ease of use                8/10         9/10      6/10       7/10
+AI capabilities            9/10         4/10      5/10       3/10
+Support quality            9/10         4/10      6/10       5/10
+Domain expertise           9/10         3/10      4/10       3/10
+
+Your advantage: AI + support + domain focus (not horizontal)
+Your weakness: Brand awareness, features breadth
+
+Pricing Strategy:
+- Enterprise: $2,000+/mo (negotiate)
+- Mid-market: $500-$1,000/mo
+- SMB: $299/mo
+- Target: 60% mid-market, 30% enterprise, 10% SMB
+
+Next 90 Days:
+- Target 20 pilot customers
+- Feature: AI automation for their top 3 workflows
+- Win rate goal: 40% → 8 customers
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Founder Toolkit © 2026 by <a href="https://github.com/asaferdman23" target="_blank">Asaf Erdman</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="https://github.com/asaferdman23/founder-toolkit" target="_blank">GitHub</a> •
+                <a href="https://github.com/asaferdman23/founder-toolkit/blob/main/README.md" target="_blank">Docs</a> •
+                <a href="https://github.com/asaferdman23/founder-toolkit/issues" target="_blank">Issues</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard() {
+            const text = '/plugin marketplace add asaferdman23/founder-toolkit';
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        function showTab(e, tabName) {
+            // Hide all tabs
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            e.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

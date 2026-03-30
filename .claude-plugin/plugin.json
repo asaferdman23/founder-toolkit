@@ -1,0 +1,10 @@
+{
+  "name": "founder-toolkit",
+  "description": "Your AI co-founder suite — ROI calculator, market intel, GTM playbook, pitch prep, investor agent, and social marketing for founders and solopreneurs.",
+  "version": "1.0.0",
+  "author": { "name": "Asaf Erdman" },
+  "homepage": "https://github.com/asaferdman23/founder-toolkit",
+  "repository": "https://github.com/asaferdman23/founder-toolkit",
+  "license": "MIT",
+  "keywords": ["claude-code", "cofounder", "founder", "startup", "roi", "gtm", "pitch", "investor", "market-analysis", "business-strategy"]
+}
