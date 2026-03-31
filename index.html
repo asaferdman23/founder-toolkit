@@ -3,217 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Founder Toolkit — Your AI Co-Founder Suite</title>
-    <meta name="description" content="Your AI co-founder for unit economics, market strategy, pitch prep, GTM, investor relations, and more. Think in numbers.">
+    <title>Founder Toolkit — AI Co-Founder for Serious Builders</title>
+    <meta name="description" content="ROI calculator, market intel, GTM strategy, pitch prep, investor relations, cost optimization. For founders who think in numbers.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script defer data-domain="cofounder.cc" src="https://plausible.io/js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer data-domain="cofounders.cc" src="https://plausible.io/js/script.js"></script>
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #1e40af;
-            --bg: #0f172a;
-            --bg-secondary: #1e293b;
-            --border: #334155;
-            --text: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --radius: 8px;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #0a0e27;
+            --bg-secondary: #13182b;
+            --bg-tertiary: #1a2344;
+            --text: #f0f4f9;
+            --text-secondary: #a8b4c8;
+            --accent: #00d9ff;
+            --accent-dark: #0099cc;
+            --border: #2a3654;
+            --grid: rgba(0, 217, 255, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
+            background-image:
+                linear-gradient(rgba(0, 217, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 0 0;
         }
 
-        /* Navigation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+        }
+
+        /* Nav */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            padding: 1.5rem 2rem;
+            z-index: 999;
             backdrop-filter: blur(10px);
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(10, 14, 39, 0.7);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            z-index: 1000;
         }
 
         nav .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
             gap: 2rem;
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
+        .logo {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent);
             text-decoration: none;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
+        .logo:hover {
+            color: var(--text);
         }
 
-        /* Main container */
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* Hero section */
+        /* Hero */
         .hero {
-            padding: 10rem 0 6rem;
+            padding: 8rem 0 6rem;
             margin-top: 4rem;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-family: 'Courier Prime', monospace;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            animation: slideUp 0.8s ease-out 0.1s both;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        /* Install section */
-        .install-box {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            margin-bottom: 3rem;
+            line-height: 1.7;
             max-width: 500px;
-            margin: 3rem auto;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-group {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            animation: slideUp 0.8s ease-out 0.3s both;
         }
 
-        .install-code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--primary);
-            flex: 1;
-        }
-
-        .copy-btn {
-            background: var(--primary);
-            color: white;
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
             cursor: pointer;
-            transition: background 0.2s;
-            font-size: 0.85rem;
-            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
             white-space: nowrap;
         }
 
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--text-secondary);
+        }
+
+        .btn-secondary:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .install-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: text;
+            user-select: all;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .install-box:hover {
+            border-color: var(--accent);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .install-text {
+            flex: 1;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
         .copy-btn:hover {
-            background: var(--primary-dark);
+            background: var(--accent-dark);
+            transform: scale(1.05);
         }
 
-        /* Skills grid */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            animation: slideRight 0.8s ease-out 0.2s both;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(0, 217, 255, 0.15), transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 217, 255, 0.08), transparent 60%);
+            z-index: -1;
+        }
+
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-block span {
+            display: block;
+        }
+
+        .code-comment {
+            color: var(--text-secondary);
+        }
+
+        .code-keyword {
+            color: var(--accent);
+        }
+
+        /* Skills section */
         .skills-section {
-            padding: 4rem 0;
+            padding: 8rem 0;
             border-top: 1px solid var(--border);
-            margin-top: 4rem;
         }
 
-        .skills-section h2 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
+        .section-header {
             text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .skill-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
             padding: 2rem;
             transition: all 0.3s;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
         }
 
         .skill-card:hover {
-            border-color: var(--primary);
-            background: rgba(59, 130, 246, 0.05);
+            border-color: var(--accent);
+            background: var(--bg-tertiary);
             transform: translateY(-4px);
         }
 
-        .skill-emoji {
-            font-size: 2rem;
+        .skill-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .skill-number {
+            font-family: 'Courier Prime', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(0, 217, 255, 0.2);
             margin-bottom: 1rem;
+            line-height: 1;
         }
 
         .skill-name {
+            font-family: 'Courier Prime', monospace;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 0.5rem;
-            color: var(--primary);
         }
 
         .skill-command {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Courier Prime', monospace;
             font-size: 0.8rem;
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(0, 217, 255, 0.05);
+            display: inline-block;
         }
 
         .skill-description {
@@ -224,117 +414,217 @@
 
         /* Demo section */
         .demo-section {
-            padding: 4rem 0;
+            padding: 8rem 0;
             border-top: 1px solid var(--border);
-        }
-
-        .demo-section h2 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
         }
 
         .tabs {
             display: flex;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 2rem;
             gap: 1rem;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
         }
 
         .tab-btn {
             background: none;
             border: none;
             color: var(--text-secondary);
-            padding: 1rem 1.5rem;
+            padding: 1rem 0;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.2s;
-            font-weight: 500;
-        }
-
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
         .tab-btn:hover {
-            color: var(--primary);
+            color: var(--accent);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
         }
 
         .tab-content {
             display: none;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .example-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .example-input,
+        .example-output {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            line-height: 1.6;
         }
 
         .example-input {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--primary);
-            font-size: 0.9rem;
+            color: var(--accent);
         }
 
         .example-output {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
             color: var(--text-secondary);
-            max-height: 300px;
-            overflow-y: auto;
+        }
+
+        .example-label {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Privacy section */
+        .privacy-section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .privacy-item {
+            text-align: center;
+        }
+
+        .privacy-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .privacy-cta {
+            text-align: center;
+        }
+
+        .privacy-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .privacy-link:hover {
+            color: var(--text);
         }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
-            padding: 4rem 0;
-            margin-top: 6rem;
+            padding: 3rem 0;
             text-align: center;
+            margin-top: 4rem;
         }
 
         footer p {
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
 
         footer a {
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: var(--text);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .skills-grid {
+            .hero-content {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
             }
 
             .nav-links {
                 gap: 1rem;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .example-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .install-box {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -343,11 +633,12 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">Founder Toolkit</div>
+            <a href="/" class="logo">&gt; COFOUNDERS</a>
             <div class="nav-links">
                 <a href="#skills">Skills</a>
                 <a href="#demo">Examples</a>
                 <a href="https://github.com/asaferdman23/founder-toolkit" target="_blank">GitHub</a>
+                <a href="./PRIVACY.md" target="_blank">Privacy</a>
             </div>
         </div>
     </nav>
@@ -355,13 +646,39 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="tagline">Your AI Co-Founder</div>
-            <h1>Think in Numbers</h1>
-            <p>ROI calculator, market intel, GTM playbook, pitch prep, investor relations, cost optimization, and social marketing — all in Claude.</p>
+            <div class="hero-content">
+                <div>
+                    <div class="hero-tagline">FOR SERIOUS BUILDERS</div>
+                    <h1>Your AI Co-Founder</h1>
+                    <p>ROI calculator, market intel, GTM strategy, pitch prep, investor relations, cost optimization, social marketing.</p>
+                    <p style="color: var(--accent); font-family: 'Courier Prime', monospace; font-weight: 600;">Think in numbers. Not guesses.</p>
 
-            <div class="install-box">
-                <code class="install-code">/plugin marketplace add asaferdman23/founder-toolkit</code>
-                <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                    <div class="cta-group">
+                        <button class="btn btn-primary" onclick="copyToClipboard()">Copy Install Command</button>
+                        <a href="https://github.com/asaferdman23/founder-toolkit" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                    </div>
+
+                    <div class="install-box" onclick="selectAllText(event)">
+                        <span class="install-text">/plugin marketplace add asaferdman23/founder-toolkit</span>
+                        <button class="copy-btn" onclick="copyToClipboard(event)">COPY</button>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="code-block">
+                        <span class="code-comment">// What you're building:</span>
+                        <span></span>
+                        <span><span class="code-keyword">const</span> revenue = 0</span>
+                        <span><span class="code-keyword">const</span> cac = 2000</span>
+                        <span><span class="code-keyword">const</span> ltv = (1500 * 18)</span>
+                        <span><span class="code-keyword">const</span> payback = cac / 1500</span>
+                        <span></span>
+                        <span class="code-comment">// What we answer:</span>
+                        <span><span class="code-keyword">/cofounder-roi</span></span>
+                        <span>→ Payback: <span class="code-keyword">1.3 months</span></span>
+                        <span>→ LTV:CAC: <span class="code-keyword">13.5:1</span> ✓</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -369,95 +686,105 @@
     <!-- Skills -->
     <section class="skills-section" id="skills">
         <div class="container">
-            <h2>8 Specialized Skills</h2>
+            <div class="section-header">
+                <h2>8 Specialized Skills</h2>
+                <p class="section-subtitle">Each one handles a critical founder problem. Use them standalone or let the router pick the right one.</p>
+            </div>
+
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-emoji">🎯</div>
+                    <div class="skill-number">01</div>
                     <div class="skill-name">Cofounder</div>
                     <div class="skill-command">/cofounder</div>
-                    <div class="skill-description">Business strategy router. Understands any founder question and routes to the right specialist or answers directly.</div>
+                    <div class="skill-description">Business strategy router. Routes any question to the right specialist or answers directly.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">📊</div>
+                    <div class="skill-number">02</div>
                     <div class="skill-name">ROI Calculator</div>
                     <div class="skill-command">/cofounder-roi</div>
-                    <div class="skill-description">Unit economics, CAC/LTV, break-even, runway, and pricing scenarios. All outputs as structured tables with assumptions.</div>
+                    <div class="skill-description">Unit economics. CAC/LTV. Break-even. Runway. All as structured tables with assumptions.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">🔍</div>
+                    <div class="skill-number">03</div>
                     <div class="skill-name">Market Intel</div>
                     <div class="skill-command">/cofounder-market</div>
-                    <div class="skill-description">Segment analysis, market sizing, competitor research, pricing strategy, and TAM estimation.</div>
+                    <div class="skill-description">Segment analysis. Market sizing. Competitor research. Pricing strategy. TAM estimation.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">🚀</div>
+                    <div class="skill-number">04</div>
                     <div class="skill-name">GTM Playbook</div>
                     <div class="skill-command">/cofounder-gtm</div>
-                    <div class="skill-description">Go-to-market strategy, networking, LinkedIn playbook, conferences, content marketing, and partnerships.</div>
+                    <div class="skill-description">Go-to-market. Networking. LinkedIn. Conferences. Content marketing. Partnerships.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">🎤</div>
+                    <div class="skill-number">05</div>
                     <div class="skill-name">Pitch Prep</div>
                     <div class="skill-command">/cofounder-pitch</div>
-                    <div class="skill-description">Prepare for any meeting — client discovery, investor pitch, demo. Get scripts, objection handling, and proposals.</div>
+                    <div class="skill-description">Client discovery. Investor pitch. Demo prep. Objection handling. Meeting scripts.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">💰</div>
+                    <div class="skill-number">06</div>
                     <div class="skill-name">Investor Agent</div>
                     <div class="skill-command">/investor</div>
-                    <div class="skill-description">Pitch decks, financial projections, fundraising strategy, valuation, and investor positioning.</div>
+                    <div class="skill-description">Pitch decks. Financial projections. Fundraising strategy. Valuation. Term sheets.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">💸</div>
+                    <div class="skill-number">07</div>
                     <div class="skill-name">Cost Reducer</div>
                     <div class="skill-command">/cost-reducer</div>
-                    <div class="skill-description">Review infrastructure costs, optimize API spending, negotiate vendor fees, and reduce cloud bills.</div>
+                    <div class="skill-description">Infrastructure costs. API optimization. Vendor negotiation. Cloud bills. FinOps.</div>
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-emoji">📱</div>
+                    <div class="skill-number">08</div>
                     <div class="skill-name">Social Marketing</div>
                     <div class="skill-command">/social-marketing</div>
-                    <div class="skill-description">Content calendars, post writing, ad copy, growth strategy, and campaign planning for every platform.</div>
+                    <div class="skill-description">Content calendars. Post writing. Ad copy. Campaign planning. Growth strategy.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Demo -->
+    <!-- Examples -->
     <section class="demo-section" id="demo">
         <div class="container">
-            <h2>Examples</h2>
-
-            <div class="tabs">
-                <button class="tab-btn active" onclick="showTab(event, 'tab-roi')">ROI Calculation</button>
-                <button class="tab-btn" onclick="showTab(event, 'tab-gtm')">GTM Strategy</button>
-                <button class="tab-btn" onclick="showTab(event, 'tab-pitch')">Pitch Prep</button>
-                <button class="tab-btn" onclick="showTab(event, 'tab-market')">Market Analysis</button>
+            <div class="section-header">
+                <h2>In Action</h2>
+                <p class="section-subtitle">Real examples of what each skill delivers.</p>
             </div>
 
-            <div id="tab-roi" class="tab-content active">
-                <strong>Question:</strong>
-                <div class="example-input">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'roi')">ROI Math</button>
+                <button class="tab-btn" onclick="switchTab(event, 'gtm')">GTM Plan</button>
+                <button class="tab-btn" onclick="switchTab(event, 'pitch')">Pitch Prep</button>
+                <button class="tab-btn" onclick="switchTab(event, 'market')">Market Size</button>
+            </div>
+
+            <div id="roi" class="tab-content active">
+                <div class="example-row">
+                    <div>
+                        <div class="example-label">YOUR QUESTION</div>
+                        <div class="example-input">
 /cofounder-roi
-Our target: B2B SaaS
-Pricing: $1,500/month
+SaaS pricing: $1,500/month
 CAC: $2,000
-Avg. customer lifetime: 18 months
-What's our payback period and LTV:CAC ratio?
-                </div>
-                <strong>Response includes:</strong>
-                <div class="example-output">
+Customer lifetime: 18 months
+→ Payback period? LTV:CAC ratio?
+                        </div>
+                    </div>
+                    <div>
+                        <div class="example-label">STRUCTURED ANSWER</div>
+                        <div class="example-output">
 Payback Period: 1.3 months
-LTV (18 months): $27,000
+LTV: $27,000 (18mo)
 CAC: $2,000
-LTV:CAC Ratio: 13.5:1 ✓ Healthy
+Ratio: 13.5:1 ✓ HEALTHY
 
 Assumptions:
 - Monthly churn: 5.5%
@@ -465,178 +792,188 @@ Assumptions:
 - No discounting
 
 Interpretation:
-You recover customer acquisition cost in 1.3 months, leaving 16.7 months of pure profit. Your ratio of 13.5:1 is exceptional for B2B SaaS (healthy = 3:1+).
+You recover CAC in 1.3 months,
+leaving 16.7 months of pure profit.
+13.5:1 is exceptional (healthy=3:1+)
 
 Next Actions:
-- Invest more in customer acquisition
-- Target 10% payback or better
-- Monitor churn — even 1% increase → 5mo payback
+→ Increase CAC spend
+→ Target payback ≤10% of LTV
+→ Monitor churn (1% ∆ = 5mo payback)
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div id="tab-gtm" class="tab-content">
-                <strong>Question:</strong>
-                <div class="example-input">
+            <div id="gtm" class="tab-content">
+                <div class="example-row">
+                    <div>
+                        <div class="example-label">YOUR QUESTION</div>
+                        <div class="example-input">
 /cofounder-gtm
-B2B SaaS for operations teams
-Budget: $2,000/month
-Timeline: 12 months
-Goal: 50 paying customers
+B2B SaaS for ops teams
+Budget: $2K/month
+Goal: 50 customers in 12mo
 
-What channels should I focus on?
-                </div>
-                <strong>Response includes:</strong>
-                <div class="example-output">
-Channel Strategy (prioritized by your situation):
+What channels? What order?
+                        </div>
+                    </div>
+                    <div>
+                        <div class="example-label">STRATEGY</div>
+                        <div class="example-output">
+CHANNEL PRIORITY
 
-1. Cold LinkedIn (30% effort, quick)
-   - 50 personalized outreach/week
-   - Expected: 2-3 meetings/week
-   - Cost: ~$0 (your time)
+1. Cold LinkedIn (30% effort)
+   50 outreach/week → 2-3 meetings
+   Cost: $0 (your time)
 
-2. Twitter/Content (40% effort, 3-6mo to payoff)
-   - 3 tweets/week about your solution
-   - Build 500 followers → 5-10 inbound/mo
-   - Cost: ~$300/mo buffer
+2. Content (40% effort, 3-6mo ROI)
+   3 tweets/week → 5-10 inbound/mo
+   Cost: $300/mo tools
 
-3. Communities (20% effort, steady)
-   - Dev.to, ProductHunt, Slack communities
-   - 2-3 hrs/week
-   - Cost: $0
+3. Communities (20% effort, quick)
+   2-3 hrs/week, dev.to, PH
+   Cost: $0
 
-4. Paid LinkedIn (10% effort, expensive)
-   - Start at $300/mo only after organic saturates
-   - Cost: $1,700/mo reserved
+4. Paid LinkedIn (10% effort)
+   Start at $300/mo only after
+   organic saturates
+   Cost: $1,700/mo reserved
 
-Budget Allocation:
-LinkedIn ads: $300/mo
-Content tools: $300/mo
+BUDGET ALLOCATION
+LinkedIn: $300/mo
+Tools: $300/mo
 Reserved: $1,400/mo
 
-Next Actions This Week:
-- Write your cold email template
-- Set up Twitter post scheduler
-- Find 3 communities to join
+WEEK 1 ACTIONS
+→ Write cold email template
+→ Set up Twitter scheduler
+→ Join 3 communities
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div id="tab-pitch" class="tab-content">
-                <strong>Question:</strong>
-                <div class="example-input">
-/cofounder-pitch
-Meeting with a Series A investor Thursday
-Industry: B2B operations SaaS
-We've closed $100K ARR
-Investor's focus: AI-powered automation
-                </div>
-                <strong>Response includes:</strong>
-                <div class="example-output">
-PITCH PREP PACKAGE
+            <div id="pitch" class="tab-content">
+                <div class="example-row">
+                    <div>
+                        <div class="example-label">YOUR CONTEXT</div>
+                        <div class="example-input">
+Meeting with Sequoia partner
+Thursday at 2pm
+$100K ARR closed
+They're interested in our AI angle
+                        </div>
+                    </div>
+                    <div>
+                        <div class="example-label">PREP PACKAGE</div>
+                        <div class="example-output">
+1. INVESTOR PROFILE
+   Thesis: AI automation, $100K-$5M ARR
+   Similar bets: Zapier, Mercury, Retool
+   Red flags: Profitability pressure
 
-1. Investor Profile Analysis
-   - Thesis: AI automation, $100K-$5M ARR stage
-   - Similar portfolio: Zapier, Mercury, Retool
-   - Red flags: Profitability pressure, path to $1M+ ARR
+2. YOUR LEAD
+   "We're the AI automation layer for..."
 
-2. Your ROI Argument
-   Lead with: "We're building the enterprise automation platform..."
-   Support with: AI efficiency + lower CAC than category average
-   Land on: "Path to $10M ARR in 3 years"
+3. OBJECTION SCRIPT
+   Q: "How is this different?"
+   A: [Your unique angle]
 
-3. Objection Handling
-   Q: "How is this different from Zapier?"
-   A: "Zapier is integration-focused. We're AI + domain expertise for [your vertical]."
-
-   Q: "What's your unfair advantage?"
-   A: [Your answer based on your unique insight/data]
-
-4. Meeting Script (with timing)
-   00:00-02:00 Warm-up + context
-   02:00-08:00 Problem + your solution
-   08:00-12:00 Traction + metrics
+4. MEETING TIMELINE
+   0:00-2:00 Warm-up + context
+   2:00-8:00 Problem + solution
+   8:00-12:00 Traction + metrics
    12:00-15:00 Vision + ask
-   15:00-20:00 Questions
+   15:00-20:00 Q&A
 
-5. Follow-up Strategy
-   - Send deck recap within 2 hours
-   - Specific question answers within 24 hours
-   - Next meeting request by Friday (use Calendly link)
+5. FOLLOW-UP
+   → Send deck recap in 2 hours
+   → Answer questions by next day
+   → Calendly link for next meeting
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div id="tab-market" class="tab-content">
-                <strong>Question:</strong>
-                <div class="example-input">
+            <div id="market" class="tab-content">
+                <div class="example-row">
+                    <div>
+                        <div class="example-label">YOUR QUESTION</div>
+                        <div class="example-input">
 /cofounder-market
-B2B SaaS for operations teams
-Target customer: Operations director
-Competitive landscape: Zapier, Make, Pabbly
-How big is the market and what's our positioning?
-                </div>
-                <strong>Response includes:</strong>
-                <div class="example-output">
-MARKET ANALYSIS
+B2B SaaS for ops teams
+Target: Ops director at $1-10M cos
+Competitors: Zapier, Make, Pabbly
 
-TAM Estimation:
-- 150K+ operations teams in US (SMB+)
-- Avg. SaaS spend per team: $8,000/year
-- Total addressable market: $1.2B+
+How big? How to position?
+                        </div>
+                    </div>
+                    <div>
+                        <div class="example-label">MARKET ANALYSIS</div>
+                        <div class="example-output">
+TAM ESTIMATION
+150K+ ops teams in US (SMB+)
+Avg SaaS spend: $8K/year
+Total addressable: $1.2B+
 
-Your Positioning (vs. competitors):
-                           You          Zapier    Make       Pabbly
-Price                      $299/mo      $299+     Free+      $99+
-Ease of use                8/10         9/10      6/10       7/10
-AI capabilities            9/10         4/10      5/10       3/10
-Support quality            9/10         4/10      6/10       5/10
-Domain expertise           9/10         3/10      4/10       3/10
+POSITIONING VS COMPETITORS
+          You     Zapier  Make  Pabbly
+Price     $299    $299+   Free  $99
+UX        8/10    9/10    6/10  7/10
+AI        9/10    4/10    5/10  3/10
+Support   9/10    4/10    6/10  5/10
+Domain    9/10    3/10    4/10  3/10
 
-Your advantage: AI + support + domain focus (not horizontal)
-Your weakness: Brand awareness, features breadth
+YOUR EDGE: AI + support + focus
+YOUR WEAKNESS: Brand, features
 
-Pricing Strategy:
-- Enterprise: $2,000+/mo (negotiate)
-- Mid-market: $500-$1,000/mo
-- SMB: $299/mo
-- Target: 60% mid-market, 30% enterprise, 10% SMB
+PRICING STRATEGY
+Enterprise: $2K+/mo
+Mid-market: $500-$1K/mo
+SMB: $299/mo
+Target mix: 60% / 30% / 10%
 
-Next 90 Days:
-- Target 20 pilot customers
-- Feature: AI automation for their top 3 workflows
-- Win rate goal: 40% → 8 customers
+NEXT 90 DAYS
+→ 20 pilot customers
+→ 40% win rate = 8 customers
+→ Feature top 3 workflows
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Privacy Section -->
-    <section style="padding: 4rem 0; border-top: 1px solid var(--border); background: rgba(59, 130, 246, 0.05);">
+    <!-- Privacy -->
+    <section class="privacy-section">
         <div class="container">
-            <h2 style="margin-bottom: 2rem; text-align: center;">Privacy First</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                    Your business data stays <strong>yours</strong>. The Founder Toolkit doesn't collect, store, or share any personal or financial information.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">No personal data<br>collected</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">No server-side<br>storage</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">No third-party<br>sharing</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Open source<br>code</div>
-                    </div>
+            <div class="section-header">
+                <h2>Privacy First</h2>
+                <p class="section-subtitle">Your business data stays yours. No collection. No tracking. No servers.</p>
+            </div>
+
+            <div class="privacy-grid">
+                <div class="privacy-item">
+                    <div class="privacy-icon">✅</div>
+                    <div class="privacy-label">No personal data collection</div>
                 </div>
-                <p style="text-align: center;">
-                    <a href="https://github.com/asaferdman23/founder-toolkit/blob/main/PRIVACY.md" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 500;">Read full privacy policy →</a>
-                </p>
+                <div class="privacy-item">
+                    <div class="privacy-icon">✅</div>
+                    <div class="privacy-label">No server-side storage</div>
+                </div>
+                <div class="privacy-item">
+                    <div class="privacy-icon">✅</div>
+                    <div class="privacy-label">No third-party sharing</div>
+                </div>
+                <div class="privacy-item">
+                    <div class="privacy-icon">✅</div>
+                    <div class="privacy-label">Open source code</div>
+                </div>
+            </div>
+
+            <div class="privacy-cta">
+                <a href="./PRIVACY.md" target="_blank" class="privacy-link">Read privacy policy →</a>
             </div>
         </div>
     </section>
@@ -645,38 +982,43 @@ Next 90 Days:
     <footer>
         <div class="container">
             <p>Founder Toolkit © 2026 by <a href="https://github.com/asaferdman23" target="_blank">Asaf Erdman</a></p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <p>
                 <a href="https://github.com/asaferdman23/founder-toolkit" target="_blank">GitHub</a> •
                 <a href="https://github.com/asaferdman23/founder-toolkit/blob/main/README.md" target="_blank">Docs</a> •
-                <a href="https://github.com/asaferdman23/founder-toolkit/blob/main/PRIVACY.md" target="_blank">Privacy</a> •
+                <a href="./PRIVACY.md" target="_blank">Privacy</a> •
                 <a href="https://github.com/asaferdman23/founder-toolkit/issues" target="_blank">Issues</a>
             </p>
         </div>
     </footer>
 
     <script>
-        function copyToClipboard() {
+        function copyToClipboard(e) {
             const text = '/plugin marketplace add asaferdman23/founder-toolkit';
             navigator.clipboard.writeText(text).then(() => {
-                const btn = event.target;
+                const btn = e?.target || document.querySelector('.copy-btn');
                 const originalText = btn.textContent;
-                btn.textContent = 'Copied!';
+                btn.textContent = '✓ COPIED';
                 setTimeout(() => {
                     btn.textContent = originalText;
                 }, 2000);
             });
+            e?.stopPropagation();
         }
 
-        function showTab(e, tabName) {
+        function selectAllText(e) {
+            const range = document.createRange();
+            range.selectNodeContents(e.currentTarget);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+
+        function switchTab(e, tabName) {
             // Hide all tabs
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Remove active from all buttons
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected tab
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Show selected
             document.getElementById(tabName).classList.add('active');
             e.target.classList.add('active');
         }
