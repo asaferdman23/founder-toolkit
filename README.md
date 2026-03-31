@@ -168,6 +168,21 @@ What should I lead with?
 
 ---
 
+## Privacy & Data
+
+**Your data stays private.**
+
+- ✅ No personal data collection
+- ✅ No server-side storage
+- ✅ No tracking or analytics (plugin level)
+- ✅ All conversations stay in your Claude session
+- ✅ Local memory files (you control them)
+- ✅ Open source — audit the code anytime
+
+Full details: [Privacy Policy](./PRIVACY.md)
+
+---
+
 ## Contributing
 
 Found a bug? Have an idea? [Open an issue on GitHub](https://github.com/asaferdman23/founder-toolkit/issues).
